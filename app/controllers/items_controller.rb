@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def show
-    # @item = Item.find(1)
+    @item = Item.find(1)
     # @evaluation = Evaluation.new
     # @evaluations = @item.evaluations.includes(:user)
   end
