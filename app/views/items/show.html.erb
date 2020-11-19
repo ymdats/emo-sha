@@ -1,0 +1,4 @@
+<h2><%= @item.name %></h2>
+<p><%= image_tag @item.image.variant(resize: '300x300'), class: 'item-image' if @item.image.attached? %></p>
+<p><%= "写真引用元URL" %></p>
+<p><%= @item.url %></p>
