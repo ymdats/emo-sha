@@ -12,9 +12,16 @@
   <body>
     <header class="header">
       <div class="header_left">
-        <h1 class="title"><a href="/">EmoGya</a></h1>
+        <h1 class="title"><a href="/">エモ写</a></h1>
         <div class="header_center">
-          <a class="login" href="/">ログイン</a>
+          <% if user_signed_in? %>
+            <%# <a class="signup" href="/users/sign_up">新規登録</a> %>
+            <%= current_user.age %>
+            <%= link_to "年齢変更", destroy_user_session_path, method: :delete, class: "signout" %>
+          <% else %>
+            <%#= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
+            <%= render "devise/sessions/new" %>
+          <% end %>
         </div>
         <div class="header_right">
           <a class="post" href="/items/new">新規投稿</a>
