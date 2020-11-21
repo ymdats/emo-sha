@@ -1,5 +1,5 @@
 h2 {
-  font-size: 8vw;
+  font-size: 80px;
   /* padding: 3vw; */
   margin: 0;
   text-align: center;
@@ -36,17 +36,39 @@ img {
   vertical-align: middle;
 }
 
-.url {
+.url-title {
   text-align: center;
-  font-size: 2vw;
+  font-size: 3vw;
+  margin: 0;
+}
+.url {
+  /* text-align: center; */
+  font-size: 3vw;
+  width: 100%;
+  overflow: scroll;
+  margin: 0;
 }
 
 table{
   margin:auto;
+  margin-top: 1vw;
   /* display: flex;
   justify-content: space-between; */
 }
 button{
   font-size: 7vw;
   width: 32.5vw;
+}
+
+.comments {
+  width: 100%;
+  border: 1px solid;
+  font-size: 3.5vw;
+  /* padding: 3vw; */
+  margin: 0;
+  /* text-align: center; */
+}
+
+ul {
+  overflow-wrap: break-word;
 }
