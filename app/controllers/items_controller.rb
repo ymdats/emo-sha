@@ -1,7 +1,11 @@
 class ItemsController < ApplicationController
 
   def show
-    @item = Item.find(1)
+    if params[:id]
+    else
+      params[:id] = 1
+    end
+    @item = Item.find(params[:id])
     @evaluation = Evaluation.new
     @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
   end
