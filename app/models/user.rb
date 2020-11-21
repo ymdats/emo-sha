@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :authentication_keys => [:age]
   # validates :age, presence: true, uniqueness: true
-  has_many :items
+  # has_many :items
+  has_many :evaluations
 
   def email_required?
     false

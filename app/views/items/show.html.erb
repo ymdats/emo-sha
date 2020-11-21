@@ -9,3 +9,18 @@
 <td><button>エモい！</button></td>
 </tr>
 </table>
+
+<div class="comments">
+  <h4>＜コメント一覧＞</h4>
+  <% if @evaluations %>
+    <% @evaluations.each do |evaluation| %>
+      <% if evaluation.comment %>
+        <p>
+          <%= "#{evaluation.user.age}歳：#{evaluation.comment}" %>
+        </p>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>コメントはありません</p>
+  <% end %>
+</div>

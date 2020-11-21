@@ -3,5 +3,7 @@ Rails.application.routes.draw do
     :sessions => 'users/sessions'
   }
   root to: 'items#show'
-  resources :items, only: [:index, :show, :new, :create]
+  resources :items, only: [:index, :show, :new, :create] do
+    resources :evaluations, only: :create
+  end
 end
