@@ -11,17 +11,28 @@
 </tr>
 </table>
 
-<div class="comments">
-  <h3>＜コメント一覧＞</h3>
-  <% if @evaluations %>
-    <% @evaluations.each do |evaluation| %>
-      <% if evaluation.comment %>
-        <ul class="comment">
-          <%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %>
-        </ul>
+<div class="comment-area">
+  <% if user_signed_in? %>
+    <div class="form-post">
+      <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
+      <%= f.text_field :comment, class: 'form-comment', placeholder: "コメントしたいほどエモった人はこちら"%>
+      <%= f.hidden_field :rate, value: 3 %>
+      <%= f.submit "投稿", class: 'btn' %>
       <% end %>
-    <% end %>
-  <% else %>
-    <p>コメントはありません</p>
+    </div>
   <% end %>
+  <div class="comment-list">
+    <h3>＜コメント一覧＞</h3>
+    <% if @evaluations %>
+      <% @evaluations.each do |evaluation| %>
+        <% if evaluation.comment %>
+          <ul class="comment">
+            <%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %>
+          </ul>
+        <% end %>
+      <% end %>
+    <% else %>
+      <p>コメントはありません</p>
+    <% end %>
+  </div>
 </div>

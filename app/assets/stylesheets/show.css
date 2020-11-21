@@ -60,13 +60,25 @@ button{
   width: 32.5vw;
 }
 
-.comments {
+.comment-area {
   width: 100%;
   border: 1px solid;
   font-size: 3.5vw;
-  /* padding: 3vw; */
   margin: 0;
-  /* text-align: center; */
+}
+
+.form-comment{
+  width: 80vw;
+  height: 100px;
+  margin: 0;
+  padding: 7px 0 3.5px 10px;
+  font-size: 4vw;
+}
+
+.form-post {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 ul {

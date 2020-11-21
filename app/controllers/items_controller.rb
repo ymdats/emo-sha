@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(1)
     @evaluation = Evaluation.new
-    @evaluations = @item.evaluations.includes(:user)
+    @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
   end
   def new
     @item = Item.new
