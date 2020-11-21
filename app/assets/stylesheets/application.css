@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+  margin: 0;
+}
+
 .header {
   background-color: cornsilk;
   display: flex;
@@ -22,6 +26,8 @@
 
 .header-left{
   display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .header-center{
@@ -44,7 +50,12 @@ a {
 
 h1 {
   font-size: 8vw;
-  padding: 3vw;
+  padding-left: 3vw;
+  margin: 0;
+}
+.sub-title {
+  font-size: 3vw;
+  padding-left: 3vw;
   margin: 0;
 }
 

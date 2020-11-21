@@ -1,16 +1,11 @@
 <h2><%= @item.name %></h2>
-<p><%= image_tag @item.image.variant(resize: '300x300'), class: 'item-image' if @item.image.attached? %></p>
-<p><%= "写真引用元URL" %></p>
-<p><%= @item.url %></p>
+<p class="frame"><%= image_tag @item.image.variant(resize: '1000x1000'), class: 'item-image' if @item.image.attached? %></p>
+<p class="url"><%= "写真引用元URL：#{@item.url}" %></p>
 
-<% if user_signed_in? %> <!-- ユーザーがログインしているか調べる -->
-  <!-- ユーザーがログインしていた時の処理 -->
-
-  <h4> ユーザーID： <%= current_user.id %> </h4>
-  <p> 年齢ID： <%= current_user.age %> </p>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %> <!-- ログアウトをする -->
-<% else %>
-  <!-- ユーザーがログインしていなかった時の処理 -->
-  <h2> 現在ログインしていません </h2>
-  <%= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
-<% end %>
+<table>
+<tr>
+<td><button>知らない</button></td>
+<td><button>知ってる</button></td>
+<td><button>エモい！</button></td>
+</tr>
+</table>
