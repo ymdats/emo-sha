@@ -1,6 +1,7 @@
 <h2><%= @item.name %></h2>
 <p class="frame"><%= image_tag @item.image.variant(resize: '1000x1000'), class: 'item-image' if @item.image.attached? %></p>
-<p class="url"><%= "写真引用元URL：#{@item.url}" %></p>
+<p class="url-title"><%= "写真引用元" %></p>
+<p class="url"><%= "#{@item.url}" %></p>
 
 <table>
 <tr>
@@ -11,13 +12,13 @@
 </table>
 
 <div class="comments">
-  <h4>＜コメント一覧＞</h4>
+  <h3>＜コメント一覧＞</h3>
   <% if @evaluations %>
     <% @evaluations.each do |evaluation| %>
       <% if evaluation.comment %>
-        <p>
-          <%= "#{evaluation.user.age}歳：#{evaluation.comment}" %>
-        </p>
+        <ul class="comment">
+          <%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %>
+        </ul>
       <% end %>
     <% end %>
   <% else %>
