@@ -17,7 +17,7 @@
       <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
       <%= f.text_field :comment, class: 'form-comment', placeholder: "コメントしたいほどエモった人はこちら"%>
       <%= f.hidden_field :rate, value: 3 %>
-      <%= f.submit "投稿", class: 'btn' %>
+      <%= f.submit "投稿", class: 'btn comment-submit' %>
       <% end %>
     </div>
   <% end %>
