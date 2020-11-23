@@ -3,12 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   # def after_sign_in_path_for(resource)
-  #   redirect_to action: :show
   #   request.referer
   # end
   # def after_sign_out_path_for(resource)
-    # redirect_to action: :show
-    # request.referer
+  #   redirect_to root_path
+  #   # request.referer
   # end
 
   protected

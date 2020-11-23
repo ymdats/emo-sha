@@ -13,11 +13,12 @@
     <header class="header">
       <div class="header-left">
         <h1 class="title"><a href="/">エモ写</a></h1>
+        <p class="sub-title">〜懐かしくてエモい写真館〜</p>
       </div>
       <div class="header-center">
         <% if user_signed_in? %>
           <%# <a class="signup" href="/users/sign_up">新規登録</a> %>
-          <div class="label"><%= "#{current_user.age}歳です！" %></div>
+          <div class="label"><%= "#{current_user.age}歳向け" %></div>
           <%= link_to "年齢変更", destroy_user_session_path, method: :delete, class: "btn" %>
         <% else %>
           <%#= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->

@@ -14,6 +14,11 @@
  *= require_self
  */
 
+body {
+  margin: 0;
+  -webkit-text-size-adjust: 100%;
+}
+
 .header {
   background-color: cornsilk;
   display: flex;
@@ -22,6 +27,8 @@
 
 .header-left{
   display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .header-center{
@@ -44,7 +51,18 @@ a {
 
 h1 {
   font-size: 8vw;
-  padding: 3vw;
+  padding-left: 3vw;
+  margin: 0;
+}
+h2 {
+  font-size: 8vw;
+  margin: 0;
+  text-align: center;
+}
+
+.sub-title {
+  font-size: 3vw;
+  padding-left: 3vw;
   margin: 0;
 }
 
@@ -77,7 +95,7 @@ h1 {
 
   /* reset */
 
-  margin: 0;      
+  margin: 0 0.3em 0 0;      
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -105,8 +123,8 @@ h1 {
 
 .btn {
   display: inline-block;
-  padding: 0.5em 1em;
-  margin-left: 0.3em;
+  padding: 0.55em 1em;
+  margin: 0;
   text-decoration: none;
   background: #668ad8;/*ボタン色*/
   color: #FFF;
@@ -131,4 +149,9 @@ h1 {
 .post {
   font-size: 5vw;
   padding: 1vw 4vw;
+}
+
+footer p {
+  font-size: 3vw;
+  text-align: center;
 }
