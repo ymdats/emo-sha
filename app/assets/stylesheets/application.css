@@ -54,6 +54,12 @@ h1 {
   padding-left: 3vw;
   margin: 0;
 }
+h2 {
+  font-size: 8vw;
+  margin: 0;
+  text-align: center;
+}
+
 .sub-title {
   font-size: 3vw;
   padding-left: 3vw;
@@ -143,4 +149,9 @@ h1 {
 .post {
   font-size: 5vw;
   padding: 1vw 4vw;
+}
+
+footer p {
+  font-size: 3vw;
+  text-align: center;
 }
