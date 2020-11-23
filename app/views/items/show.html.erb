@@ -1,38 +1,143 @@
-<h2><%= @item.name %></h2>
-<p class="frame"><%= image_tag @item.image.variant(resize: '1000x1000'), class: 'item-image' if @item.image.attached? %></p>
-<p class="url-title"><%= "写真引用元" %></p>
-<p class="url"><%= "#{@item.url}" %></p>
+<%# ①ログインしている場合 %>
+<% if user_signed_in? %>
+  <%# ②ホームボタン押した場合 %>
+  <% if params[:id] == nil %>
+    <%# ③次の評価アイテムが決まってない場合 %>
+    <% if $item_choice == nil %>
+      <% @items = Item.all %>
+      <% $item_menu = [] %>
+      <% @items.each do |item| %>
+        <% $item_menu << item.id %>
+      <% end %>
+      <% random = rand($item_menu.length) %>
+      <% $item_choice = $item_menu[random] %>
+      <% $item_menu.delete_at(random) %>
+      <h2><a class="show" href="/items/<%= $item_choice%>">評価スタート！</a></h2>
+    <%# ③次の評価アイテムが決まっている場合 %>
+    <% else %>
+      <%# ④未評価アイテムidの配列が空になった場合 %>
+      <% if $item_menu == [] %>
+        <h2><a class="show" href="/items/start">最初からやり直す？</a></h2>
+      <%# ④未評価アイテムidの配列が未だある場合 %>
+      <% else %>
+        <h2><a class="show" href="/items/start">最初からやり直す？</a></h2>
+        <h2><a class="show" href="javascript:history.back()">評価に戻る？</a></h2>
+      <% end %>
+    <% end %>
 
-<table>
-<tr>
-<td><button>知らない</button></td>
-<td><button>知ってる</button></td>
-<td><button>エモい！</button></td>
-</tr>
-</table>
+  <%# ②評価開始ページ %>
+  <% elsif params[:id] == "start" %>
+    <% @items = Item.all %>
+    <% $item_menu = [] %>
+    <% @items.each do |item| %>
+      <% $item_menu << item.id %>
+    <% end %>
+    <% random = rand($item_menu.length) %>
+    <% $item_choice = $item_menu[random] %>
+    <% $item_menu.delete_at(random) %>
+    <h2><a class="show" href="/items/<%= $item_choice%>">評価再スタート！</a></h2>
+  <%# ②評価完了ページ %>
+  <% elsif params[:id] == "finish" %>
+    <h2>全ての評価が完了しました</h2>
+    <h2>ありがとうございました</h2>
+  <% else %>
 
-<div class="comment-area">
-  <% if user_signed_in? %>
-    <div class="form-post">
-      <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
-      <%= f.text_field :comment, class: 'form-comment', placeholder: "コメントしたいほどエモった人はこちら"%>
-      <%= f.hidden_field :rate, value: 3 %>
-      <%= f.submit "投稿", class: 'btn comment-submit' %>
+  <%# ②各アイテムの詳細ページ %>
+  <h2><%= @item.name %></h2>
+  <p class="frame"><%= image_tag @item.image.variant(resize: '1000x1000'), class: 'item-image' if @item.image.attached? %></p>
+  <p class="url-title"><%= "写真引用元" %></p>
+  <p class="url"><%= "#{@item.url}" %></p>
+
+  <%# 評価ボタン %>
+  <table>
+    <tr>
+      <td>
+        <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
+          <%= f.hidden_field :rate, value: 1 %>
+          <%= f.submit "知らない", class: 'rate' %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
+          <%= f.hidden_field :rate, value: 2 %>
+          <%= f.submit "知ってる", class: 'rate' %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
+          <%= f.hidden_field :rate, value: 3 %>
+          <%= f.submit "エモい！", class: 'rate' %>
+        <% end %>
+      </td>
+    </tr>
+
+    <%# 年齢の範囲（上下限設定） %>
+    <% lowerage = (current_user.id-5) %>
+    <% if lowerage < 20 %>
+      <% lowerage = 20 %>
+    <% end %>
+    <% upperage = (current_user.id+5) %>
+    <% if upperage > 60 %>
+      <% upperage = 60 %>
+    <% end %>
+
+    <%# 各評価の票数とパーセントの計算 %>
+    <% total = @item.evaluations.where(user_id: lowerage..upperage).count %>
+    <% if total == 0 %>
+    <% point1 = 0 %>
+    <% point2 = 0 %>
+    <% point3 = 0 %>
+    <% ratio1 = 0 %>
+    <% ratio2 = 0 %>
+    <% ratio3 = 0 %>
+    <% else %>
+    <% point1 = @item.evaluations.where(rate: 1, user_id: lowerage..upperage).count %>
+    <% point2 = @item.evaluations.where(rate: 2, user_id: lowerage..upperage).count %>
+    <% point3 = @item.evaluations.where(rate: 3, user_id: lowerage..upperage).count %>
+    <% ratio1 = point1 * 100 / total %>
+    <% ratio2 = point2 * 100 / total %>
+    <% ratio3 = point3 * 100 / total %>
+    <% end %>
+
+    <tr>
+      <td><%= "#{ratio1}%(#{point1}票)" %></td>
+      <td><%= "#{ratio2}%(#{point2}票)" %></td>
+      <td><%= "#{ratio3}%(#{point3}票)" %></td>
+    </tr>
+  </table>
+  
+  <div class="note"><%= "※ 上記数値はあなたと同年代(#{lowerage}~#{upperage}歳)のみんなの評価です。" %></div>
+
+  <div class="comment-area">
+    <% if user_signed_in? %>
+      <div class="form-post">
+        <%= form_with(model: [@item, @evaluation], local: true) do |f| %>
+        <%= f.text_field :comment, class: 'form-comment', placeholder: "コメントしたいほどエモった人はこちら"%>
+        <%= f.hidden_field :rate, value: 3 %>
+        <%= f.submit "投稿", class: 'btn submit' %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="comment-list">
+      <h3>＜コメント一覧＞</h3>
+      <% if @evaluations %>
+        <% @evaluations.each do |evaluation| %>
+          <% if evaluation.comment %>
+            <ul class="comment">
+              <%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %>
+            </ul>
+          <% end %>
+        <% end %>
+      <% else %>
+        <p>コメントはありません</p>
       <% end %>
     </div>
-  <% end %>
-  <div class="comment-list">
-    <h3>＜コメント一覧＞</h3>
-    <% if @evaluations %>
-      <% @evaluations.each do |evaluation| %>
-        <% if evaluation.comment %>
-          <ul class="comment">
-            <%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %>
-          </ul>
-        <% end %>
-      <% end %>
-    <% else %>
-      <p>コメントはありません</p>
-    <% end %>
   </div>
-</div>
+
+  <% end %>
+
+<%# ①ログインしてない場合 %>
+<% else %>
+    <% $item_choice = nil %>
+    <h2>年齢を選択してください</h2>
+<% end %>
