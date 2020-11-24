@@ -7,8 +7,8 @@
           <span class="frame">クリックして画像を添付</span>
           <%= f.file_field :image, class: 'form-image' %><br>
         </label>
-        <%= f.text_field :name, placeholder: "名前", class: 'form-name' %><br>
-        <%= f.text_field :url, placeholder: "写真引用元URL", class: 'form-url' %><br>
+        <%= f.text_field :name, placeholder: "写真の名前", class: 'form-name' %><br>
+        <%= f.text_field :url, placeholder: "写真の引用元URL", class: 'form-url' %><br>
       </div>
       <%= f.submit "投稿", class: 'btn submit' %>
     <% end %>
