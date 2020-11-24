@@ -12,16 +12,31 @@
       <% random = rand($item_menu.length) %>
       <% $item_choice = $item_menu[random] %>
       <% $item_menu.delete_at(random) %>
-      <h2><a class="show" href="/items/<%= $item_choice%>">評価スタート！</a></h2>
+
+      <table>
+        <tr><td><a href="/items/start"><%= image_tag "start.png", class: "choice" %></a></td></tr>
+        <tr><td><button><a class="show" href="/items/<%= $item_choice%>">スタート！</a></button></td></tr>
+      </table>
     <%# ③次の評価アイテムが決まっている場合 %>
     <% else %>
       <%# ④未評価アイテムidの配列が空になった場合 %>
       <% if $item_menu == [] %>
-        <h2><a class="show" href="/items/start">最初からやり直す？</a></h2>
+        <table>
+          <tr><td><a href="/items/start"><%= image_tag "reset.png", class: "choice" %></a></td></tr>
+          <tr><td><button><a class="show" href="/items/start">最初からやる</a></button></td></tr>
+        </table>
       <%# ④未評価アイテムidの配列が未だある場合 %>
       <% else %>
-        <h2><a class="show" href="/items/start">最初からやり直す？</a></h2>
-        <h2><a class="show" href="javascript:history.back()">評価に戻る？</a></h2>
+        <table>
+          <tr>
+            <td><a href="/items/start"><%= image_tag "reset.png", class: "choice" %></a></td>
+            <td><a href="javascript:history.back()"><%= image_tag "more.png", class: "choice" %></a></td>
+          </tr>
+          <tr>
+            <td><button><a class="show" href="/items/start">最初からやる</a></button></td>
+            <td><button><a class="show" href="javascript:history.back()">続きに戻る</a></button></td>
+          </tr>
+        </table>
       <% end %>
     <% end %>
 
@@ -35,11 +50,17 @@
     <% random = rand($item_menu.length) %>
     <% $item_choice = $item_menu[random] %>
     <% $item_menu.delete_at(random) %>
-    <h2><a class="show" href="/items/<%= $item_choice%>">評価再スタート！</a></h2>
+    <table>
+      <tr>
+        <td><a href="/items/<%= $item_choice%>"><%= image_tag "restart.png", class: "choice" %></a></td>
+      </tr>
+      <tr>
+        <td><button><a class="show" href="/items/<%= $item_choice%>">再スタート！</a></button></td>
+      </tr>
+    </table>
   <%# ②評価完了ページ %>
   <% elsif params[:id] == "finish" %>
-    <h2>全ての評価が完了しました</h2>
-    <h2>ありがとうございました</h2>
+    <h2>全ての評価が完了しました<br>ありがとうございました</h2>
   <% else %>
 
   <%# ②各アイテムの詳細ページ %>
@@ -138,6 +159,41 @@
 
 <%# ①ログインしてない場合 %>
 <% else %>
-    <% $item_choice = nil %>
-    <h2>年齢を選択してください</h2>
+  <% $item_choice = nil %>
+  <h2>⬆️まずは年齢を選択⬆️</h2>
+  <% items = Item.all %>
+  <% item_menu = [] %>
+  <% items.each do |item| %>
+    <% item_menu << item.id %>
+
+  <% end %>
+
+  <% random1 = rand(item_menu.length) %>
+  <% item_choice1 = item_menu[random1] %>
+  <% item_menu.delete_at(random1) %>
+  <% random2 = rand(item_menu.length) %>
+  <% item_choice2 = item_menu[random2] %>
+  <% item_menu.delete_at(random2) %>
+  <% random3 = rand(item_menu.length) %>
+  <% item_choice3 = item_menu[random3] %>
+  <% item_menu.delete_at(random3) %>
+  <% random4 = rand(item_menu.length) %>
+  <% item_choice4 = item_menu[random4] %>
+  <% item_menu.delete_at(random4) %>
+
+  <div class="frame-cover">
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice1).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice1).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice2).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice2).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice3).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice3).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice4).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice4).image.attached? %>
+    </p>
+  </div>
+
 <% end %>

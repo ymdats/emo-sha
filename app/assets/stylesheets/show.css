@@ -1,18 +1,13 @@
 .frame {
+  color: #364e96;
+  font-size: 8vw;
   width: 100vw;
   height: 100vw;
-  background-color: antiquewhite;
+  /* background-color: antiquewhite; */
   text-align: center;
   margin: 0;
-}
-
-img {
-  width:auto;
-  height:auto;
-  max-width:100%;
-  max-height:100%;
-  /* position: absolute; */
-  /* top: 30vw; */
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
 }
 
 .frame:before{
@@ -29,17 +24,68 @@ img {
   vertical-align: middle;
 }
 
+/* .frame-top {
+  width: 100vw;
+  height: 100vw;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
+}
+
+.frame-top > .image-top {
+  width:auto;
+  height:auto;
+  max-width:50%;
+  max-height:50%;
+} */
+
+.frame-cover {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.frame-top {
+  width: 50vw;
+  height: 50vw;
+  margin: 0;
+  background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
+  background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.frame-top > .image-top {
+  /* width:auto;
+  height:auto; */
+  max-width:100%;
+  max-height:100%;
+  margin-left : auto;
+  margin-right: auto;
+  /* justify-content: center; */
+}
+
+
 .url-title {
+  color: #364e96;
   text-align: center;
   font-size: 3.5vw;
   margin: 0;
+  background-color: #ecf6ff;
+  border-top: solid 3px #364e96;
 }
 .url {
-  /* text-align: center; */
+  color: #364e96;
   font-size: 3.5vw;
   width: 100%;
   overflow: scroll;
   margin: 0;
+  background-color: #ecf6ff;
+  border-bottom: solid 3px #364e96;
 }
 
 table{
@@ -48,6 +94,16 @@ table{
   /* display: flex;
   justify-content: space-between; */
 }
+
+button {
+  font-size: 7vw;
+  width: 50vw;
+  text-align: center;
+}
+.choice {
+  height: 25vw;
+}
+
 .rate{
   font-size: 7vw;
   width: 32.5vw;

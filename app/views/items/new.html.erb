@@ -1,16 +1,16 @@
 <div class="contents row">
   <div class="container">
-    <h3>投稿する</h3>
+    <h2>投稿する</h2>
     <%= form_with model: @item, class: 'form', local: true do |f| %>
-      <div class="form-input">
-        <label class="form-image">
-          <span class="form-image">画像</span>
-          <%= f.file_field :image, class: 'hidden' %><br>
+      <div class="form-area">
+        <label class="form-post">
+          <span class="frame">クリックして画像を添付</span>
+          <%= f.file_field :image, class: 'form-image' %><br>
         </label>
-        <%= f.text_field :name, placeholder: "名前" %><br>
-        <%= f.text_area :url, placeholder: "写真引用元URL" %><br>
+        <%= f.text_field :name, placeholder: "写真の名前", class: 'form-name' %><br>
+        <%= f.text_field :url, placeholder: "写真の引用元URL", class: 'form-url' %><br>
       </div>
-      <%= f.submit "SEND", class: 'form-submit' %>
+      <%= f.submit "投稿", class: 'btn submit' %>
     <% end %>
   </div>
 </div>
