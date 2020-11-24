@@ -20,9 +20,11 @@ body {
 }
 
 .header {
-  background-color: cornsilk;
+  background-color: #ecf6ff;
   display: flex;
   justify-content: space-between;
+  /* border-bottom: solid 1px black; */
+  padding-bottom: 1vw;
 }
 
 .header-left{
@@ -46,7 +48,16 @@ body {
 }
 
 a {
+  color: #364e96;
   text-decoration: none;
+}
+a:link, a:visited {
+  color: #364e96;
+  text-decoration: none;
+}
+a:hover, a:active {
+  color: #963636;
+  text-decoration: underline;
 }
 
 h1 {
@@ -56,14 +67,20 @@ h1 {
 }
 h2 {
   font-size: 8vw;
+  color: #364e96;
+  background-color: #ecf6ff;
+  padding: 0.1em 0;
   margin: 0;
+  border-top: solid 10px #364e96;
+  border-bottom: solid 10px #364e96;
   text-align: center;
 }
 
 .sub-title {
-  font-size: 3vw;
+  font-size: 3.5vw;
   padding-left: 3vw;
   margin: 0;
+  color: #364e96;
 }
 
 .login {
@@ -73,6 +90,7 @@ h2 {
 }
 
 .label {
+  color: #364e96;
   font-size: 5vw;
   text-align: center;
 }
@@ -84,6 +102,7 @@ h2 {
 
 .select {
   /* styling */
+  color: #364e96;
   background-color: white;
   border: thin solid blue;
   border-radius: 4px;
@@ -123,14 +142,14 @@ h2 {
 
 .btn {
   display: inline-block;
-  padding: 0.55em 1em;
+  padding: 0.3em 0.5em;
   margin: 0;
   text-decoration: none;
   background: #668ad8;/*ボタン色*/
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
-  font-size: 4vw;
+  font-size: 5vw;
 }
 .btn:active {
   /*ボタンを押したとき*/
@@ -139,6 +158,9 @@ h2 {
   border-bottom: none;/*線を消す*/
 }
 
+.header-center .btn {
+  color: white;
+}
 
 
 .list {
