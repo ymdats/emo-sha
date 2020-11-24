@@ -1,0 +1,32 @@
+.form-image{
+  font-size: 5vw;
+  position: absolute;
+  top: 100vw;
+  left: 10vw;
+}
+
+.container {
+  text-align: center;
+}
+
+.form-name{
+  width: 96vw;
+  height: 100px;
+  margin: 1vw 0 0 0;
+  padding-left: 3vw;
+  font-size: 4vw;
+  line-height: 180px;
+}
+
+.form-url{
+  width: 96vw;
+  height: 100px;
+  margin: 1vw 0 1vw 0;
+  padding-left: 3vw;
+  font-size: 4vw;
+  line-height: 100px;
+}
+
+.item-submit {
+  text-align: center;
+}
