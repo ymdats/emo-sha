@@ -181,12 +181,19 @@
   <% item_choice4 = item_menu[random4] %>
   <% item_menu.delete_at(random4) %>
 
-
-  <p class="frame-top">
-    <%= image_tag Item.find(item_choice1).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice1).image.attached? %>
-    <%= image_tag Item.find(item_choice2).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice2).image.attached? %>
-    <%= image_tag Item.find(item_choice3).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice3).image.attached? %>
-    <%= image_tag Item.find(item_choice4).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice4).image.attached? %>
-  </p>
+  <div class="frame-cover">
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice1).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice1).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice2).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice2).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice3).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice3).image.attached? %>
+    </p>
+    <p class="frame-top">
+      <%= image_tag Item.find(item_choice4).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice4).image.attached? %>
+    </p>
+  </div>
 
 <% end %>
