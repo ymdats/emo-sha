@@ -1,1 +1,28 @@
-indexビューページ
+<h2>エモ度ランキング</h2>
+<% if user_signed_in? %>
+  <div class="note note-rank"><%= "※ 数値はあなたと同年代(#{@lowerage}~#{@upperage}歳)のみんなの評価です。" %></div>
+<% else %>
+  <div class="note note-rank"><%= "※ 数値は全年代(#{@lowerage}~#{@upperage}歳)のみんなの評価です。" %></div>
+<% end %>
+
+  <div class="ranking">
+    <% ranking = 0 %>
+    <% $item_list.each do |item_menu| %>
+      <% ranking += 1 %>
+      <div class="ranking-frame">
+        <% item = Item.find(item_menu[0]) %>
+        <% $item_choice = $item_menu[item.id] %>
+        <% $item_menu.delete(item.id) %>        
+        <a href="/items/<%= item.id %>">
+          <div class="ranking-detail">
+            <p><%= "#{ranking}位(エモ度#{item_menu[1]}%)" %></p>
+            <p><%= "#{item.name}" %></p>
+          </div>
+          <div class="ranking-image">
+            <%= image_tag item.image.variant(resize: '1000x1000'), class: 'image-top' if item.image.attached? %>
+          </div>
+        </a>
+      </div>
+    <% end %>    
+  </div>
+
