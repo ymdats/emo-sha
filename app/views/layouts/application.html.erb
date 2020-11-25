@@ -10,25 +10,30 @@
   </head>
 
   <body>
-    <header class="header">
-      <div class="header-left">
-        <h1 class="title"><a href="/">エモ写</a></h1>
-        <p class="sub-title">懐かしくてエモい写真館</p>
+    <header>
+      <div class="header">
+        <div class="header-left">
+          <h1 class="title"><a href="/">エモ写</a></h1>
+          <p class="sub-title">懐かしくてエモい写真館</p>
+        </div>
+        <div class="header-right">
+          <% if user_signed_in? %>
+            <div class="login">
+              <div class="login-low">
+                <div class="label"><%= "#{current_user.age}歳用" %></div>
+                <%= link_to "変更", destroy_user_session_path, method: :delete, class: "btn" %>
+            </div>
+          </div>
+          <% else %>
+            <%= render "devise/sessions/new" %>
+          <% end %>
+        </div>
       </div>
-      <div class="header-center">
-        <% if user_signed_in? %>
-          <%# <a class="signup" href="/users/sign_up">新規登録</a> %>
-          <div class="label"><%= "#{current_user.age}歳向け" %></div>
-          <%= link_to "年齢変更", destroy_user_session_path, method: :delete, class: "btn" %>
-        <% else %>
-          <%#= link_to "ログイン", new_user_session_path, class: 'post' %> <!-- ログイン画面に移行する -->
-          <%= render "devise/sessions/new" %>
-        <% end %>
-      </div>
-      <div class="header-right">
-        <a class="list" href="/items">一覧</a>
-        <a class="post" href="/items/new">投稿</a>
-      </div>
+      <ul class="header-lower">
+        <a class="list" href="/"><li>メイン</li></a>
+        <a class="list" href="/items"><li>ランキング</li></a>
+        <a class="list" href="/items/new"><li>写真投稿</li></a>
+      </ul>
     </header>
     <%= yield %>
     <footer>

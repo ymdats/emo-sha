@@ -1,7 +1,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
   <div class="login">
-    <%= f.label "年齢ログイン", {class: 'label'} %><br />
+    <%#= f.label "年齢ログイン", {class: 'label'} %><br />
     <div class="login-low">
       <%= f.select :age, [
         ["20歳", 20], ["21歳", 21], ["22歳", 22], ["23歳", 23], ["24歳", 24],
