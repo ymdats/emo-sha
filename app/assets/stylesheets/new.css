@@ -1,8 +1,8 @@
 .form-image{
-  font-size: 5vw;
+  font-size: 4vw;
   position: absolute;
-  top: 100vw;
-  left: 10vw;
+  top: 110vw;
+  left: 18vw;
 }
 
 .container {
@@ -21,7 +21,7 @@
 .form-url{
   width: 96vw;
   height: 100px;
-  margin: 1vw 0 1vw 0;
+  margin: 1vw 0 0 0;
   padding-left: 3vw;
   font-size: 4vw;
   line-height: 100px;
@@ -29,4 +29,11 @@
 
 .item-submit {
   text-align: center;
+}
+
+.caution {
+  text-align: left;
+  font-size: 3.5vw;
+  padding-left: 3vw;
+  margin-bottom: 2vw;
 }

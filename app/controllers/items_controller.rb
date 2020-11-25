@@ -57,6 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def new
+    $item_choice = nil
     @item = Item.new
   end
   def create

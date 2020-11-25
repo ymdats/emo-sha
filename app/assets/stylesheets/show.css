@@ -51,7 +51,6 @@
   /* justify-content: center; */
 }
 
-
 .url-title {
   color: #364e96;
   text-align: center;
@@ -62,9 +61,10 @@
 }
 .url {
   color: #364e96;
-  font-size: 3.5vw;
+  font-size: 3vw;
   width: 100%;
-  overflow: scroll;
+  text-align: center;
+  overflow: hidden;
   margin: 0;
   background-color: #ecf6ff;
   border-bottom: solid 3px #364e96;
@@ -110,11 +110,11 @@ td{
 }
 
 .form-comment{
-  width: 80vw;
-  height: 100px;
-  margin: 0;
-  padding: 7px 0 3.5px 10px;
-  font-size: 4vw;
+  width: 72vw;
+  height: 120px;
+  margin-right: 5px;
+  padding: 15px 0 10px 10px;
+  font-size: 5vw;
 }
 
 .form-post {
@@ -124,6 +124,16 @@ td{
   align-items: center;
 }
 
+.image-post {
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 ul {
   overflow-wrap: break-word;
+}
+.comment > li {
+  list-style-type: square;
 }
