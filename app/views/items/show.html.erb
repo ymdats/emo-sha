@@ -60,7 +60,14 @@
     </table>
   <%# ②評価完了ページ %>
   <% elsif params[:id] == "finish" %>
-    <h2>全ての評価が完了しました<br>ありがとうございました</h2>
+    <table>
+      <tr>
+        <td><a href="/items/"><%= image_tag "summary.png", class: "choice" %></a></td>
+      </tr>
+      <tr>
+        <td><button><a href="/items/">一覧へ移動</a></button></td>
+      </tr>
+    </table>
   <% else %>
 
   <%# ②各アイテムの詳細ページ %>
@@ -159,41 +166,20 @@
 
 <%# ①ログインしてない場合 %>
 <% else %>
-  <% $item_choice = nil %>
-  <h2>⬆️まずは年齢を選択⬆️</h2>
-  <% items = Item.all %>
-  <% item_menu = [] %>
-  <% items.each do |item| %>
-    <% item_menu << item.id %>
-
+  <% if params[:id] %>
+    <% $item_choice = params[:id] %>
+    <% @items = Item.all %>
+    <% $item_menu = [] %>
+    <% @items.each do |item| %>
+        <% $item_menu << item.id %>
+    <% end %>
+    <% $item_choice = params[:id] %>
+    <% $item_menu.delete($item_choice) %>
+  <% else%>
+    <% $item_choice = nil %>
   <% end %>
 
-  <% random1 = rand(item_menu.length) %>
-  <% item_choice1 = item_menu[random1] %>
-  <% item_menu.delete_at(random1) %>
-  <% random2 = rand(item_menu.length) %>
-  <% item_choice2 = item_menu[random2] %>
-  <% item_menu.delete_at(random2) %>
-  <% random3 = rand(item_menu.length) %>
-  <% item_choice3 = item_menu[random3] %>
-  <% item_menu.delete_at(random3) %>
-  <% random4 = rand(item_menu.length) %>
-  <% item_choice4 = item_menu[random4] %>
-  <% item_menu.delete_at(random4) %>
-
-  <div class="frame-cover">
-    <p class="frame-top">
-      <%= image_tag Item.find(item_choice1).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice1).image.attached? %>
-    </p>
-    <p class="frame-top">
-      <%= image_tag Item.find(item_choice2).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice2).image.attached? %>
-    </p>
-    <p class="frame-top">
-      <%= image_tag Item.find(item_choice3).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice3).image.attached? %>
-    </p>
-    <p class="frame-top">
-      <%= image_tag Item.find(item_choice4).image.variant(resize: '1000x1000'), class: 'image-top' if Item.find(item_choice4).image.attached? %>
-    </p>
-  </div>
+  <h2>⬆️まずは年齢を選択⬆️</h2>
+  <p class="frame"><%= image_tag "age-select.jpg", class: 'item-image' %></p>
 
 <% end %>
