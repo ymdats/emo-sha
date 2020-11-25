@@ -1,5 +1,4 @@
-document.addEventListener("turbolinks:load"
-, function () {
+document.addEventListener("turbolinks:load", function () {
 
 // 年齢選択ボタン
 $(function() {
@@ -31,7 +30,7 @@ $(function() {
 
 // アイテム投稿ボタン
 $(function() {
-  if ( $('.form-image').val() !== "" && $('.form-name').val() !== "" ) {
+  if ( $('.form-image').val() === "" && $('.form-name').val() === "" ) {
     $('.submit').attr('disabled', 'disabled');
   }
   $('.form-image, .form-name').bind('keydown keyup keypress change', function() {
