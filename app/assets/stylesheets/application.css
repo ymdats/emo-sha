@@ -21,6 +21,7 @@ input[type="button"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  padding: 0;
 }
 
 body {
@@ -160,7 +161,7 @@ h2 {
   color: #FFF;
   border-bottom: solid 4px #627295;
   border-radius: 3px;
-  font-size: 6vw;
+  font-size: 5vw;
 }
 .btn:active {
   /*ボタンを押したとき*/
