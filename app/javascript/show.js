@@ -28,18 +28,4 @@ $(function() {
   });
 });
 
-// アイテム投稿ボタン
-$(function() {
-  if ( $('.form-image').val() === "" && $('.form-name').val() === "" ) {
-    $('.submit').attr('disabled', 'disabled');
-  }
-  $('.form-image, .form-name').bind('keydown keyup keypress change', function() {
-    if ( $('.form-image').val() !== "" && $('.form-name').val() !== "" ) {
-      $('.submit').removeAttr('disabled');
-    } else {
-      $('.submit').attr('disabled', 'disabled');
-    }
-  });
-});
-
 });
