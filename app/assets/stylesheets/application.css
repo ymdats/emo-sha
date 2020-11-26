@@ -16,12 +16,12 @@
 
  /* iOSボタンのcssリセット */
 input[type="submit"],
-input[type="button"] {
+input[type="button"],
+button {
   border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  padding: 0;
 }
 
 body {

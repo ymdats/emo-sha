@@ -81,6 +81,10 @@ button {
   font-size: 7vw;
   width: 50vw;
   text-align: center;
+  border-radius: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
 .choice {
   height: 25vw;
@@ -89,6 +93,7 @@ button {
 .rate{
   font-size: 7vw;
   width: 32.5vw;
+  padding: 0;
   text-align: center;
 }
 td{
