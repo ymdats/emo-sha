@@ -16,8 +16,8 @@
 }
 
 .ranking-image {
-  width: 33vw;
-  height: 33vw;
+  width: 32vw;
+  height: 32vw;
   margin: 0;
   background: -webkit-repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
   background: repeating-linear-gradient(-45deg, #cce7ff, #cce7ff 30px,#e9f4ff 30px, #e9f4ff 70px);
