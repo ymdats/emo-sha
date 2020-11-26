@@ -4,15 +4,17 @@
     <%= form_with model: @item, class: 'form', local: true do |f| %>
       <div class="form-area">
         <label class="image-post">
-          <span class="frame">クリックして画像を添付</span>
+
+          <div id="frame-image"></div>
+          <div class="click">クリックして画像を添付</div>
           <%= f.file_field :image, class: 'form-image' %><br>
+          <div id = "image-list"></div>
         </label>
         <%= f.text_field :name, placeholder: "写真の名前", class: 'form-name' %><br>
         <%= f.text_field :url, placeholder: "写真の引用元URL", class: 'form-url' %><br>
         <div class="caution"><%= "※Webサイトの写真をアップする場合、URL入力必須です。" %></div>
       </div>
       <%= f.submit "投稿", class: 'btn submit' %>
-
     <% end %>
   </div>
 </div>
