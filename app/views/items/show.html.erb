@@ -96,13 +96,9 @@
   <% comments = [] %>
   <%# 年齢の範囲（上下限設定） %>
   <% lowerage = (current_user.id-5) %>
-  <% if lowerage < 20 %>
-    <% lowerage = 20 %>
-  <% end %>
+  <% lowerage = 20 if lowerage < 20 %>
   <% upperage = (current_user.id+5) %>
-  <% if upperage > 60 %>
-    <% upperage = 60 %>
-  <% end %>
+  <% upperage = 60 if upperage > 60 %>
 
   <% if @evaluations %>
     <% @evaluations.each do |evaluation| %>
@@ -117,9 +113,11 @@
           <% point3 += 1 %>
         <% end %>
       <% end %>
-      <% ratio1 = point1 * 100 / total %>
-      <% ratio2 = point2 * 100 / total %>
-      <% ratio3 = point3 * 100 / total %>
+      <% if total != 0 %>
+        <% ratio1 = point1 * 100 / total %>
+        <% ratio2 = point2 * 100 / total %>
+        <% ratio3 = point3 * 100 / total %>
+      <% end %>
       <%# 評価のコメントを配列に入れておく（後で使う） %>
       <% if evaluation.comment %>
         <% comments << "#{evaluation.comment} (#{evaluation.user.age}歳)" %>
