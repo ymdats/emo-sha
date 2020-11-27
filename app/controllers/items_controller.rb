@@ -20,7 +20,7 @@ class ItemsController < ApplicationController
       @upperage = 60
     end
 
-    @items = Item.all
+    @items = Item.includes(:evaluations)
     $item_list = []
     @items.each do |item|
       total = item.evaluations.where(user_id: @lowerage..@upperage).count
@@ -50,8 +50,9 @@ class ItemsController < ApplicationController
     elsif params[:id] == "finish" # 評価完了
       # 何も入れないで良い
     else # それ以外（params[:id]に数値が入る場合）
-      @item = Item.find(params[:id])
+      @item = Item.includes(:evaluations).find(params[:id])
       @evaluation = Evaluation.new
+      # @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
       @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
     end
   end
