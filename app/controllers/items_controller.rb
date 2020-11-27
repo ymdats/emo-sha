@@ -1,15 +1,6 @@
 class ItemsController < ApplicationController
 
   def index
-
-    # 評価に使ってた記憶をリセット
-    $item_choice = nil
-    @items = Item.all
-    $item_menu = []
-    @items.each do |item|
-      $item_menu << item.id
-    end
-
     if user_signed_in?
       @lowerage = (current_user.id-5)
       @lowerage = 20 if @lowerage < 20
@@ -20,19 +11,43 @@ class ItemsController < ApplicationController
       @upperage = 60
     end
 
-    @items = Item.all
-    $item_list = []
+    @items = Item.includes(:evaluations).with_attached_image
+    $item_list = [] #ランキング配列用 [item.id, ratio3]
+    $item_choice = nil #評価(item_menu)初期化
+    $item_menu = [] #評価(item_menu)初期化
     @items.each do |item|
-      total = item.evaluations.where(user_id: @lowerage..@upperage).count
-      if total == 0
-        ratio3 = 0
-      else
-        point3 = item.evaluations.where(rate: 3, user_id: @lowerage..@upperage).count
+      $item_menu << item.id #評価(item_menu)初期化
+      total = 0
+      point3 = 0
+      ratio3 = 0
+      item.evaluations.each do |evaluation|
+        if evaluation.user_id >= @lowerage && evaluation.user_id <= @upperage
+          total += 1
+          if evaluation.rate == 3
+            point3 += 1
+          end
+        end
+      end
+      if total != 0
         ratio3 = point3 * 100 / total
       end
-      $item_list << [item.id, ratio3]
+      $item_list << [item.id, item.name, ratio3, item.image]
     end
-    $item_list = $item_list.sort_by { |_, b| b }.reverse
+    $item_list = $item_list.sort_by { |_,_,c,_| c }.reverse
+
+    # @items = Item.includes(:evaluations)
+    # $item_list = []
+    # @items.each do |item|
+    #   total = item.evaluations.where(user_id: @lowerage..@upperage).count
+    #   if total == 0
+    #     ratio3 = 0
+    #   else
+    #     point3 = item.evaluations.where(rate: 3, user_id: @lowerage..@upperage).count
+    #     ratio3 = point3 * 100 / total
+    #   end
+    #   $item_list << [item.id, ratio3]
+    # end
+    # $item_list = $item_list.sort_by { |_, b| b }.reverse
   end
 
   def show
@@ -52,6 +67,7 @@ class ItemsController < ApplicationController
     else # それ以外（params[:id]に数値が入る場合）
       @item = Item.find(params[:id])
       @evaluation = Evaluation.new
+      # @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
       @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
     end
   end

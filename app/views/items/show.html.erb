@@ -84,6 +84,49 @@
     <p class="url" style="text-align:center"><%= "＜この写真にはリンク先がありません＞" %></p>
   <% end %>
 
+<%# ↓↓↓ 事前計算 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓ %>
+  <%# 各評価の票数とパーセントとコメントの初期化 %>
+  <% total = 0 %>
+  <% point1 = 0 %>
+  <% point2 = 0 %>
+  <% point3 = 0 %>
+  <% ratio1 = 0 %>
+  <% ratio2 = 0 %>
+  <% ratio3 = 0 %>
+  <% comments = [] %>
+  <%# 年齢の範囲（上下限設定） %>
+  <% lowerage = (current_user.id-5) %>
+  <% lowerage = 20 if lowerage < 20 %>
+  <% upperage = (current_user.id+5) %>
+  <% upperage = 60 if upperage > 60 %>
+
+  <% if @evaluations %>
+    <% @evaluations.each do |evaluation| %>
+      <%# 各評価の票数とパーセントの計算 %>
+      <% if evaluation.user_id >= lowerage && evaluation.user_id <= upperage %>
+        <% total += 1 %>
+        <% if evaluation.rate == 1 %>
+          <% point1 += 1 %>
+        <% elsif evaluation.rate == 2 %>
+          <% point2 += 1 %>
+        <% elsif evaluation.rate == 3 %>
+          <% point3 += 1 %>
+        <% end %>
+      <% end %>
+      <% if total != 0 %>
+        <% ratio1 = point1 * 100 / total %>
+        <% ratio2 = point2 * 100 / total %>
+        <% ratio3 = point3 * 100 / total %>
+      <% end %>
+      <%# 評価のコメントを配列に入れておく（後で使う） %>
+      <% if evaluation.comment %>
+        <% comments << "#{evaluation.comment} (#{evaluation.user.age}歳)" %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p>コメントはありません</p>
+  <% end %>
+<%# ↑↑↑ 事前計算 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ %>
 
   <%# 評価ボタン %>
   <table>
@@ -108,34 +151,6 @@
       </td>
     </tr>
 
-    <%# 年齢の範囲（上下限設定） %>
-    <% lowerage = (current_user.id-5) %>
-    <% if lowerage < 20 %>
-      <% lowerage = 20 %>
-    <% end %>
-    <% upperage = (current_user.id+5) %>
-    <% if upperage > 60 %>
-      <% upperage = 60 %>
-    <% end %>
-
-    <%# 各評価の票数とパーセントの計算 %>
-    <% total = @item.evaluations.where(user_id: lowerage..upperage).count %>
-    <% if total == 0 %>
-    <% point1 = 0 %>
-    <% point2 = 0 %>
-    <% point3 = 0 %>
-    <% ratio1 = 0 %>
-    <% ratio2 = 0 %>
-    <% ratio3 = 0 %>
-    <% else %>
-    <% point1 = @item.evaluations.where(rate: 1, user_id: lowerage..upperage).count %>
-    <% point2 = @item.evaluations.where(rate: 2, user_id: lowerage..upperage).count %>
-    <% point3 = @item.evaluations.where(rate: 3, user_id: lowerage..upperage).count %>
-    <% ratio1 = point1 * 100 / total %>
-    <% ratio2 = point2 * 100 / total %>
-    <% ratio3 = point3 * 100 / total %>
-    <% end %>
-
     <tr>
       <td><%= "#{ratio1}%(#{point1}票)" %></td>
       <td><%= "#{ratio2}%(#{point2}票)" %></td>
@@ -157,17 +172,11 @@
     <% end %>
     <div class="comment-list">
       <h3>＜コメント一覧＞</h3>
-      <% if @evaluations %>
-        <% @evaluations.each do |evaluation| %>
-          <% if evaluation.comment %>
-            <ul class="comment">
-              <li><%= simple_format("#{evaluation.comment} (#{evaluation.user.age}歳)") %></li>
-            </ul>
-          <% end %>
+      <ul class="comment">
+        <% comments.each do |comment| %>
+            <li><%= simple_format("#{comment}") %></li>
         <% end %>
-      <% else %>
-        <p>コメントはありません</p>
-      <% end %>
+      </ul>
     </div>
   </div>
 
