@@ -74,12 +74,12 @@
   <h2><%= @item.name %></h2>
   <% if @item.url != "" %>
     <a href="<%= @item.url %>"target="_blank" rel="noopener noreferrer">
-      <p class="frame"><%= image_tag @item.image.variant(resize: '200x200'), class: 'item-image' if @item.image.attached? %></p>
+      <p class="frame"><%= image_tag @item.image.variant(resize: '300x300'), class: 'item-image' if @item.image.attached? %></p>
     </a>
     <p class="url-title"><%= "写真引用元 (写真をクリックすると新規タブで開きます)" %></p>
     <p class="url"><%= "#{@item.url}" %></p>
   <% else %>
-    <p class="frame"><%= image_tag @item.image.variant(resize: '200x200'), class: 'item-image' if @item.image.attached? %></p>
+    <p class="frame"><%= image_tag @item.image.variant(resize: '300x300'), class: 'item-image' if @item.image.attached? %></p>
     <p class="url-title"><%= "写真引用元" %></p>
     <p class="url" style="text-align:center"><%= "＜この写真にはリンク先がありません＞" %></p>
   <% end %>
