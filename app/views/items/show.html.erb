@@ -15,7 +15,7 @@
 
       <table>
         <tr><td><a href="/items/start"><%= image_tag "start.png", class: "choice" %></a></td></tr>
-        <tr><td><button><a class="show" href="/items/<%= $item_choice%>">スタート！</a></button></td></tr>
+        <tr><td><button><a class="show" href="/items/<%= $item_choice%>">スタート</a></button></td></tr>
       </table>
     <%# ③次の評価アイテムが決まっている場合 %>
     <% else %>
@@ -23,7 +23,7 @@
       <% if $item_menu == [] %>
         <table>
           <tr><td><a href="/items/start"><%= image_tag "reset.png", class: "choice" %></a></td></tr>
-          <tr><td><button><a class="show" href="/items/start">最初からやる</a></button></td></tr>
+          <tr><td><button><a class="show" href="/items/start">最初から</a></button></td></tr>
         </table>
       <%# ④未評価アイテムidの配列が未だある場合 %>
       <% else %>
@@ -33,7 +33,7 @@
             <td><a href="javascript:history.back()"><%= image_tag "more.png", class: "choice" %></a></td>
           </tr>
           <tr>
-            <td><button><a class="show" href="/items/start">最初からやる</a></button></td>
+            <td><button><a class="show" href="/items/start">最初から</a></button></td>
             <td><button><a class="show" href="javascript:history.back()">続きに戻る</a></button></td>
           </tr>
         </table>
@@ -55,7 +55,7 @@
         <td><a href="/items/<%= $item_choice%>"><%= image_tag "restart.png", class: "choice" %></a></td>
       </tr>
       <tr>
-        <td><button><a class="show" href="/items/<%= $item_choice%>">再スタート！</a></button></td>
+        <td><button><a class="show" href="/items/<%= $item_choice%>">再スタート</a></button></td>
       </tr>
     </table>
   <%# ②評価完了ページ %>
