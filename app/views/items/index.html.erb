@@ -10,7 +10,6 @@
     <% $item_list.each do |item_menu| %>
       <% ranking += 1 %>
       <div class="ranking-frame">
-        <%# $item_choice = $item_menu[item.id] %>
         <% $item_choice = item_menu[0] %>
         <% $item_menu.delete(item_menu[0]) %>        
         <a href="/items/<%= item_menu[0] %>">

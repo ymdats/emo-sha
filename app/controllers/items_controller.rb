@@ -34,21 +34,7 @@ class ItemsController < ApplicationController
       $item_list << [item.id, item.name, ratio3, item.image]
     end
     $item_list = $item_list.sort_by { |_,_,c,_| c }.reverse
-
-    # @items = Item.includes(:evaluations)
-    # $item_list = []
-    # @items.each do |item|
-    #   total = item.evaluations.where(user_id: @lowerage..@upperage).count
-    #   if total == 0
-    #     ratio3 = 0
-    #   else
-    #     point3 = item.evaluations.where(rate: 3, user_id: @lowerage..@upperage).count
-    #     ratio3 = point3 * 100 / total
-    #   end
-    #   $item_list << [item.id, ratio3]
-    # end
-    # $item_list = $item_list.sort_by { |_, b| b }.reverse
-  end
+end
 
   def show
     if params[:id] == nil # 最初の入口（ルート先）
@@ -67,7 +53,6 @@ class ItemsController < ApplicationController
     else # それ以外（params[:id]に数値が入る場合）
       @item = Item.find(params[:id])
       @evaluation = Evaluation.new
-      # @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
       @evaluations = @item.evaluations.includes(:user).order("created_at DESC")
     end
   end
