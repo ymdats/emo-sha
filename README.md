@@ -12,9 +12,8 @@
 まずはスクールで習った技術で、簡単に使うことができるアプリを作りたかった。
 
 ## デモ画像
-<img src="https://ymdats.com/wp-content/uploads/2020/11/edcd1a050cbabc214724e0882a30e671-1024x606.jpg" width="300px">
-![emo-sha](https://user-images.githubusercontent.com/61939802/101240663-1bd98780-3734-11eb-82c6-42a5c2d2e3a8.gif)
-
+<img src="https://ymdats.com/wp-content/uploads/2020/11/edcd1a050cbabc214724e0882a30e671-1024x606.jpg" width="70%">
+![emo-sha](https://user-images.githubusercontent.com/61939802/101240803-e2ede280-3734-11eb-9ac8-349c7737771a.gif)
 
 ## 工夫ポイント
 - ユーザーに手間をかけさせない。
@@ -26,7 +25,18 @@
   - 間違った写真を投稿が出来ないように、必須項目を入力したらボタンが有効化。
 
 ## 開発環境
+- フロントエンド : HTML / CSS / jQuery
+- サーバーサイド : Ruby 2.6.5 / Rails 6.0.3.4
+- データベース : MySQL / Heroku / AWS S3
 
 ## DB設計
+<img src="https://ymdats.com/wp-content/uploads/2020/11/e885f54df07827aba9d8b9a2be10c95e-1024x407.png" width="70%">
 
 ## 今後の課題
+- **他のサーバーを使ってみる**<br>
+  今回デプロイしたHeroku(無料プラン)だと、サーバーにアクセスした時に読み込み時間が遅いことがあるため。
+- **Webデザインを勉強する**<br>
+  今回アプリを作ってみて、いわゆるかっこいいWebデザインを作ることが出来ないことが分かったため。
+- **自分の困りごとを解決してみる**<br>
+  継続的に使われるためには、個人的なアプリでもいいので何かの役に立つアプリを作った方が良いと思ったので。
+
