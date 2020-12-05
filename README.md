@@ -15,7 +15,7 @@
 - 世間一般共通の話題にする。
 
 ## デモ画像
-
+![emo-sha](https://user-images.githubusercontent.com/61939802/101240121-90aac280-3730-11eb-8703-4c19fb13206f.gif)
 
 
 ## 工夫ポイント
