@@ -13,7 +13,7 @@
 
 ## デモ画像
 <img src="https://ymdats.com/wp-content/uploads/2020/11/edcd1a050cbabc214724e0882a30e671-1024x606.jpg" width="70%">
-<img src="https://ymdats.com/wp-content/uploads/2020/11/emo-sha.gif">
+![emo-sha](https://user-images.githubusercontent.com/61939802/101241252-bbe4e000-3737-11eb-97c4-9ac75ac85733.gif)
 
 ## 工夫ポイント
 ### ユーザーに手間をかけさせない。
