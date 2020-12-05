@@ -12,8 +12,10 @@
 まずはスクールで習った技術で、簡単に使うことができるアプリを作りたかった。
 
 ## デモ画像
-![edcd1a050cbabc214724e0882a30e671](https://user-images.githubusercontent.com/61939802/101240178-f6974a00-3730-11eb-853e-dc1220a3d74f.jpg)
+<img src="https://ymdats.com/wp-content/uploads/2020/11/edcd1a050cbabc214724e0882a30e671-1024x606.jpg" width="100px">
+
 ![emo-sha](https://user-images.githubusercontent.com/61939802/101240121-90aac280-3730-11eb-8703-4c19fb13206f.gif)
+![edcd1a050cbabc214724e0882a30e671](https://user-images.githubusercontent.com/61939802/101240178-f6974a00-3730-11eb-853e-dc1220a3d74f.jpg =100x)
 
 ## 工夫ポイント
 - ユーザーに手間をかけさせない。
