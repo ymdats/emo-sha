@@ -1,24 +1,15 @@
-# README
+# エモ写（懐かしくてエモい写真館）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 概要説明
 
-Things you may want to cover:
+## 制作背景
 
-* Ruby version
+## デモ画像
 
-* System dependencies
+## 工夫ポイント
 
-* Configuration
+## 開発環境
 
-* Database creation
+## DB設計
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 今後の課題
