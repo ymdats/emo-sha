@@ -12,13 +12,6 @@ class User < ApplicationRecord
     false
   end
 
-  def email_changed?
-    false
-  end
-  
-  # def will_save_change_to_email?
-  #   false
-  # end
   def password_required?
     false
   end

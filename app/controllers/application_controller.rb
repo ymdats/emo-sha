@@ -6,11 +6,10 @@ class ApplicationController < ActionController::Base
     request.referer
   end
   def after_sign_out_path_for(resource)
-    
     request.referer
   end
 
-  protected
+  private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:age])
     devise_parameter_sanitizer.permit(:sign_in, keys: [:age])
