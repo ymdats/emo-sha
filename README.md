@@ -1,6 +1,7 @@
 # エモ写（懐かしくてエモい写真館）
 ブログではもっと詳細を記載しておりますので良かったら見てください。<br>
 →[ Ruby on Railsで作る初めてのオリジナルアプリ](https://ymdats.com/emo-sha-overview)
+→<a href="https://ymdats.com/emo-sha-overview" target="_blank"> Ruby on Railsで作る初めてのオリジナルアプリ</a>
 
 ## 概要説明
 懐かしい写真をみんなで共有・共感して、エモさを感じるアプリです。
