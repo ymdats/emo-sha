@@ -13,7 +13,7 @@
 
 ## デモ画像
 <img src="https://ymdats.com/wp-content/uploads/2020/11/edcd1a050cbabc214724e0882a30e671-1024x606.jpg" width="70%">
-![emo-sha](https://user-images.githubusercontent.com/61939802/101241252-bbe4e000-3737-11eb-97c4-9ac75ac85733.gif)
+<img src="https://ymdats.com/wp-content/uploads/2020/11/emo-sha.gif">
 
 ## 工夫ポイント
 ### ユーザーに手間をかけさせない。
@@ -31,8 +31,6 @@
 
 ## DB設計
 <img src="https://ymdats.com/wp-content/uploads/2020/11/e885f54df07827aba9d8b9a2be10c95e-1024x407.png" width="70%">
-![emo-sha](https://user-images.githubusercontent.com/61939802/101241252-bbe4e000-3737-11eb-97c4-9ac75ac85733.gif)
-
 
 ## 今後の課題
 ### 他のサーバーを使ってみる
